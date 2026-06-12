@@ -1,0 +1,29 @@
+---
+interface Props {
+  formule: {
+    id: string;
+    name: string;
+    price: string;
+    unit: string;
+    description: string;
+    featured: boolean;
+    items: string[];
+  };
+}
+const { formule } = Astro.props;
+---
+
+<article class={`formule-card fade-in ${formule.featured ? 'formule-card--featured' : ''}`}>
+  <h3 class="formule-card__name">{formule.name}</h3>
+  <p class="text-muted" style="font-size: 0.95rem;">{formule.description}</p>
+  <div>
+    <div class="formule-card__price">{formule.price}</div>
+    <small>{formule.unit}</small>
+  </div>
+  <ul class="formule-card__list">
+    {formule.items.map(item => <li>{item}</li>)}
+  </ul>
+  <a href="/contact/" class={`btn ${formule.featured ? 'btn--accent' : 'btn--ghost'}`}>
+    Demander un devis
+  </a>
+</article>

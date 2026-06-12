@@ -1,0 +1,21 @@
+---
+interface Props {
+  items?: { label: string; src?: string }[];
+  count?: number;
+}
+const { items, count = 12 } = Astro.props;
+const placeholders = Array.from({ length: count }, (_, i) => ({ label: `Photo ${i + 1}` }));
+const list = items && items.length ? items : placeholders;
+---
+
+<div class="galerie-grid">
+  {list.map(item => (
+    <figure class="galerie-item fade-in">
+      {item.src ? (
+        <img src={item.src} alt={item.label} loading="lazy" />
+      ) : (
+        <figcaption>{item.label}</figcaption>
+      )}
+    </figure>
+  ))}
+</div>

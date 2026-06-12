@@ -1,0 +1,49 @@
+---
+import { site, nav } from '../data/site.js';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div>
+        <div class="site-footer__brand">{site.name}</div>
+        <p style="color: rgba(250,247,242,0.75); font-size: 0.95rem; max-width: 32ch;">
+          {site.description}
+        </p>
+      </div>
+
+      <div>
+        <h2 class="site-footer__title">Navigation</h2>
+        <ul class="site-footer__list">
+          {nav.map(item => <li><a href={item.href}>{item.label}</a></li>)}
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="site-footer__title">Zone d'intervention</h2>
+        <ul class="site-footer__list">
+          {site.villes.map(v => <li>{v}</li>)}
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="site-footer__title">Contact</h2>
+        <ul class="site-footer__list">
+          <li>{site.contact.city}</li>
+          <li>{site.contact.email}</li>
+          <li>{site.contact.phone}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <span>© {year} {site.name}. Tous droits réservés.</span>
+      <span>
+        <a href="/mentions-legales/">Mentions légales</a> ·
+        <a href="/cgv/">CGV</a> ·
+        <a href="/confidentialite/">Confidentialité</a>
+      </span>
+    </div>
+  </div>
+</footer>

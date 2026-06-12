@@ -1,0 +1,34 @@
+---
+interface Props {
+  borne: {
+    id: string;
+    name: string;
+    tagline: string;
+    description: string;
+    specs: string[];
+    image: string | null;
+    couleur: string;
+  };
+}
+const { borne } = Astro.props;
+---
+
+<article class="card fade-in" id={`borne-${borne.id}`}>
+  <div class="card__media" style={`background: linear-gradient(135deg, ${borne.couleur}, var(--color-text));`}>
+    {borne.image ? (
+      <img src={borne.image} alt={`Borne ${borne.name}`} loading="lazy" />
+    ) : (
+      <div class="card__placeholder" style="color: rgba(250,247,242,0.6);">
+        Photo · {borne.name}
+      </div>
+    )}
+  </div>
+  <div class="card__body">
+    <span class="eyebrow">{borne.tagline}</span>
+    <h3 class="card__title">{borne.name}</h3>
+    <p class="card__desc">{borne.description}</p>
+    <ul class="card__specs">
+      {borne.specs.map(s => <li class="spec-chip">{s}</li>)}
+    </ul>
+  </div>
+</article>

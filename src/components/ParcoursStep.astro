@@ -1,0 +1,14 @@
+---
+interface Props {
+  num: number | string;
+  title: string;
+  desc: string;
+}
+const { num, title, desc } = Astro.props;
+---
+
+<div class="parcours-step">
+  <span class="parcours-step__num" aria-hidden="true">{String(num).padStart(2, '0')}</span>
+  <h3 class="parcours-step__title">{title}</h3>
+  <p class="parcours-step__desc">{desc}</p>
+</div>

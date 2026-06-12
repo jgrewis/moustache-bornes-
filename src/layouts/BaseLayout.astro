@@ -1,0 +1,46 @@
+---
+import SeoHead from '../components/SeoHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/tokens.css';
+import '../styles/reset.css';
+import '../styles/base.css';
+import '../styles/utilities.css';
+import '../styles/components/header.css';
+import '../styles/components/footer.css';
+import '../styles/components/hero.css';
+import '../styles/components/card.css';
+import '../styles/components/form.css';
+import '../styles/components/parcours.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+const { title, description, image } = Astro.props;
+const path = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="fr">
+<head>
+  <SeoHead title={title} description={description} path={path} image={image} />
+</head>
+<body>
+  <a href="#main" class="skip-link">Aller au contenu</a>
+  <Header />
+  <main id="main">
+    <slot />
+  </main>
+  <Footer />
+
+  <!--
+    Script unique chargé depuis /public/ → sert exactement avec `script-src 'self'`
+    (CSP stricte). `defer` garantit l'exécution après le DOM, sans bloquer le rendu.
+    Ne PAS passer par un bloc <script>import ...</script> Astro : il inline le code
+    dans le HTML, ce qui exige `'unsafe-inline'` et casse la CSP.
+  -->
+  <script src="/scripts/site.js" defer></script>
+</body>
+</html>

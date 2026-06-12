@@ -1,0 +1,39 @@
+---
+import { site, nav } from '../data/site.js';
+const path = Astro.url.pathname;
+const isActive = (href: string) => href === '/' ? path === '/' : path.startsWith(href);
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href="/" class="site-header__brand" aria-label={`${site.name} — accueil`}>
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M8 34 C 14 28, 22 28, 28 34 C 30 32, 34 32, 36 34 C 42 28, 50 28, 56 34 C 50 40, 42 40, 36 36 C 34 38, 30 38, 28 36 C 22 40, 14 40, 8 34 Z" fill="currentColor"/>
+      </svg>
+      <span>{site.name}</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+      <ul class="site-nav__list">
+        {nav.filter(item => item.href !== '/contact/').map(item => (
+          <li>
+            <a
+              href={item.href}
+              class="site-nav__link"
+              aria-current={isActive(item.href) ? 'page' : undefined}
+            >{item.label}</a>
+          </li>
+        ))}
+        <li>
+          <a href="/contact/" class="btn btn--accent site-nav__cta">Demander un devis</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

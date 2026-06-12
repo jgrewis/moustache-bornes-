@@ -1,0 +1,32 @@
+---
+interface Props {
+  question: string;
+  answer: string;
+  id: string;
+}
+const { question, answer, id } = Astro.props;
+---
+
+<div class="faq-item">
+  <button
+    class="faq-item__trigger"
+    type="button"
+    aria-expanded="false"
+    aria-controls={`faq-panel-${id}`}
+    id={`faq-trigger-${id}`}
+  >
+    <span>{question}</span>
+    <svg class="faq-item__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+      <line x1="12" y1="5" x2="12" y2="19"/>
+      <line x1="5" y1="12" x2="19" y2="12"/>
+    </svg>
+  </button>
+  <div
+    class="faq-item__panel"
+    id={`faq-panel-${id}`}
+    role="region"
+    aria-labelledby={`faq-trigger-${id}`}
+  >
+    <div class="faq-item__panel-inner">{answer}</div>
+  </div>
+</div>

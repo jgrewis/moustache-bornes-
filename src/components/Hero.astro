@@ -1,0 +1,43 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+  ctaPrimary?: { href: string; label: string };
+  ctaSecondary?: { href: string; label: string };
+  compact?: boolean;
+  visualLabel?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  lead,
+  ctaPrimary,
+  ctaSecondary,
+  compact = false,
+  visualLabel = 'Souriez, ça shoote',
+} = Astro.props;
+---
+
+<section class={`hero ${compact ? 'hero--compact' : ''}`}>
+  <div class="container hero__inner">
+    <div class="hero__content">
+      {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+      <h1 class="hero__title" set:html={title} />
+      {compact && <span class="moustache-divider" aria-hidden="true" style="margin-inline: auto; margin-block: var(--space-4);"></span>}
+      {lead && <p class="hero__lead">{lead}</p>}
+      {(ctaPrimary || ctaSecondary) && (
+        <div class="hero__actions">
+          {ctaPrimary && <a href={ctaPrimary.href} class="btn btn--primary">{ctaPrimary.label}</a>}
+          {ctaSecondary && <a href={ctaSecondary.href} class="btn btn--ghost">{ctaSecondary.label}</a>}
+        </div>
+      )}
+    </div>
+    {!compact && (
+      <div class="hero__visual" aria-hidden="true">
+        <span class="hero__visual-label">« {visualLabel} »</span>
+      </div>
+    )}
+  </div>
+</section>
