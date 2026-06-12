@@ -1,0 +1,150 @@
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: var(--container-narrow);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+.section {
+  padding-block: var(--space-9);
+}
+.section--alt {
+  background-color: var(--color-bg-alt);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-5);
+}
+.grid--3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.grid--2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+
+.flex {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.text-center { text-align: center; }
+.text-muted { color: var(--color-text-muted); }
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--fs-meta);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin-bottom: var(--space-3);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition:
+    transform var(--transition-fast),
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+  cursor: pointer;
+  border: 2px solid transparent;
+  line-height: 1.2;
+  min-height: 48px;
+  user-select: none;
+}
+.btn:hover { transform: translateY(-1px); text-decoration: none; }
+.btn:active { transform: translateY(0); }
+.btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  pointer-events: none;
+}
+
+.btn--primary {
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+.btn--primary:hover { background: var(--color-secondary); }
+.btn--primary:active { background: var(--color-secondary-dark); }
+
+.btn--accent {
+  background: var(--color-accent);
+  color: var(--color-text);
+}
+.btn--accent:hover { background: var(--color-accent-dark); }
+.btn--accent:active { background: var(--color-accent-dark); box-shadow: inset 0 1px 2px rgba(0,0,0,0.15); }
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-text);
+  border-color: var(--color-text);
+}
+.btn--ghost:hover { background: var(--color-text); color: var(--color-bg); }
+.btn--ghost:active { background: var(--color-secondary); border-color: var(--color-secondary); color: var(--color-bg); }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0);
+  white-space: nowrap; border: 0;
+}
+
+.divider {
+  width: 60px;
+  height: 2px;
+  background: var(--color-accent);
+  margin: var(--space-4) auto;
+  border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Signature visuelle "Moustache" : un séparateur en forme de moustache stylisée,
+   doré, à utiliser pour ponctuer les sections clés. C'est l'élément distinctif
+   qui éloigne le site d'un template générique sans alourdir le DOM.
+   Usage : <span class="moustache-divider" aria-hidden="true"></span>
+   -------------------------------------------------------------------------- */
+.moustache-divider {
+  display: block;
+  width: 72px;
+  height: 28px;
+  margin: var(--space-4) auto;
+  background-color: var(--color-accent);
+  /* Silhouette moustache encodée en SVG (mask) — pas de requête réseau, pas de dépendance */
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 24'><path d='M2 13 C 10 5, 20 5, 28 13 C 30 11, 34 11, 36 13 C 44 5, 54 5, 62 13 C 54 21, 44 21, 36 15 C 34 17, 30 17, 28 15 C 20 21, 10 21, 2 13 Z'/></svg>") center / contain no-repeat;
+          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 24'><path d='M2 13 C 10 5, 20 5, 28 13 C 30 11, 34 11, 36 13 C 44 5, 54 5, 62 13 C 54 21, 44 21, 36 15 C 34 17, 30 17, 28 15 C 20 21, 10 21, 2 13 Z'/></svg>") center / contain no-repeat;
+}
+.moustache-divider--bordeaux { background-color: var(--color-secondary); }
+.moustache-divider--light { background-color: var(--color-bg); }
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+.fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
