@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page introuvable" description="Cette page n'existe pas ou a été déplacée.">
+  <section class="section" style="text-align: center;">
+    <div class="container container-narrow">
+      <span class="eyebrow">Erreur 404</span>
+      <h1>Cette page a disparu derrière le rideau</h1>
+      <p class="text-muted" style="margin: var(--space-5) auto;">
+        Le lien que vous avez suivi est cassé, ou la page a été déplacée. Pas de panique : revenons à l'accueil.
+      </p>
+      <div style="display:flex; gap: var(--space-4); justify-content:center; flex-wrap: wrap;">
+        <a href="/" class="btn btn--primary">Retour à l'accueil</a>
+        <a href="/contact/" class="btn btn--ghost">Nous écrire</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

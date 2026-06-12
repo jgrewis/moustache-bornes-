@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import GalerieGrid from '../components/GalerieGrid.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+---
+
+<BaseLayout
+  title="Galerie"
+  description="Quelques souvenirs capturés avec nos bornes photo Moustache : mariages, anniversaires, événements d'entreprise en Alsace."
+>
+  <Hero
+    compact
+    eyebrow="Nos réalisations"
+    title="Sourires en série"
+    lead="Quelques moments capturés avec nos bornes lors de mariages, anniversaires et soirées d'entreprise."
+  />
+
+  <section class="section">
+    <div class="container">
+      <GalerieGrid count={16} />
+      <p class="text-center text-muted" style="margin-top: var(--space-6); font-size: 0.95rem;">
+        Photos publiées avec l'accord de nos clients.
+      </p>
+    </div>
+  </section>
+
+  <CtaBanner
+    title="Et si la prochaine c'était la vôtre ?"
+    text="Décrivez-nous votre projet, nous revenons vers vous sous 24 h."
+  />
+</BaseLayout>

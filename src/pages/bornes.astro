@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import BorneCard from '../components/BorneCard.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import { bornes } from '../data/bornes.js';
+---
+
+<BaseLayout
+  title="Nos bornes"
+  description="Découvrez nos trois modèles de bornes photo : La Classique, La Miroir et l'Open-Air. Location en Alsace et 100 km autour de Mulhouse."
+>
+  <Hero
+    compact
+    eyebrow="Notre catalogue"
+    title="Trois bornes pour trois ambiances"
+    lead="Toutes nos bornes incluent l'impression illimitée, les accessoires et la personnalisation des tirages."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid--3">
+        {bornes.map(b => <BorneCard borne={b} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container container-narrow">
+      <div class="section__head">
+        <span class="eyebrow">Inclus dans toutes nos formules</span>
+        <h2>Ce que vous trouverez dans la borne</h2>
+      </div>
+      <ul style="display:grid; gap: var(--space-3); max-width: 60ch; margin-inline: auto;">
+        <li>✦ Écran tactile haute définition et appareil photo reflex</li>
+        <li>✦ Impression instantanée illimitée (format 10 × 15 cm ou bandeau)</li>
+        <li>✦ Pack accessoires complet : chapeaux, lunettes, pancartes, moustaches</li>
+        <li>✦ 2 fonds au choix (uni, paillettes, fleuri, sur mesure en option)</li>
+        <li>✦ Maquette de tirage personnalisée à votre événement</li>
+        <li>✦ Récupération de toutes les photos sur galerie privée après l'événement</li>
+      </ul>
+    </div>
+  </section>
+
+  <CtaBanner
+    title="Une borne en tête ?"
+    text="Décrivez-nous votre événement, nous vous confirmons la disponibilité sous 24 h."
+  />
+</BaseLayout>

@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import FaqItem from '../components/FaqItem.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import { faq } from '../data/faq.js';
+---
+
+<BaseLayout
+  title="FAQ"
+  description="Les réponses aux questions fréquentes sur la location de borne photo Moustache : zone, livraison, accessoires, tarifs, réservation."
+>
+  <Hero
+    compact
+    eyebrow="On vous répond"
+    title="Vos questions, nos réponses"
+    lead="Si vous ne trouvez pas votre réponse ici, écrivez-nous : nous répondons sous 24 h."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="faq-list">
+        {faq.map((item, i) => (
+          <FaqItem id={String(i)} question={item.q} answer={item.a} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner
+    title="Une question spécifique ?"
+    text="Posez-la directement, nous adorons ça."
+    ctaLabel="Nous écrire"
+  />
+</BaseLayout>

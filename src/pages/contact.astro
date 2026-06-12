@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import DevisForm from '../components/DevisForm.astro';
+import { site } from '../data/site.js';
+---
+
+<BaseLayout
+  title="Contact & devis"
+  description="Demandez votre devis location borne photo en Alsace : formulaire complet, réponse sous 24 h ouvrées."
+>
+  <Hero
+    compact
+    eyebrow="Demande de devis"
+    title="Parlez-nous de votre événement"
+    lead="Remplissez ce formulaire et nous revenons vers vous sous 24 h ouvrées avec une proposition personnalisée."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div style="display: grid; gap: var(--space-7); grid-template-columns: 2fr 1fr; align-items: start;">
+        <div>
+          <DevisForm />
+        </div>
+        <aside style="background: var(--color-bg-alt); padding: var(--space-6); border-radius: var(--radius-md); position: sticky; top: 100px;">
+          <h2 style="font-size: 1.25rem; margin-bottom: var(--space-4);">Autres moyens de nous joindre</h2>
+          <div style="display: flex; flex-direction: column; gap: var(--space-4); font-size: 0.95rem;">
+            <div>
+              <div class="eyebrow" style="margin: 0;">Email</div>
+              <div>{site.contact.email}</div>
+            </div>
+            <div>
+              <div class="eyebrow" style="margin: 0;">Téléphone</div>
+              <div>{site.contact.phone}</div>
+            </div>
+            <div>
+              <div class="eyebrow" style="margin: 0;">Adresse</div>
+              <div>{site.contact.city}</div>
+            </div>
+            <div>
+              <div class="eyebrow" style="margin: 0;">Zone d'intervention</div>
+              <div>{site.zone}</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @media (max-width: 880px) {
+      section > .container > div { grid-template-columns: 1fr !important; }
+      section > .container > div > aside { position: static !important; }
+    }
+  </style>
+</BaseLayout>

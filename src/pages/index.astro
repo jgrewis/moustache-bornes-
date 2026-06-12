@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import BorneCard from '../components/BorneCard.astro';
+import FormuleCard from '../components/FormuleCard.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import { bornes } from '../data/bornes.js';
+import { formules } from '../data/formules.js';
+import { site } from '../data/site.js';
+---
+
+<BaseLayout
+  title={site.name}
+  description={site.description}
+>
+  <Hero
+    eyebrow="Mulhouse · Alsace · 100 km"
+    title="La borne photo qui fait <em>sourire</em> vos invités."
+    lead="Mariages, anniversaires, séminaires : Moustache loue des bornes photo élégantes, livrées chez vous ou installées sur place par notre équipe."
+    ctaPrimary={{ href: '/contact/', label: 'Demander un devis' }}
+    ctaSecondary={{ href: '/bornes/', label: 'Voir les bornes' }}
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="section__head">
+        <span class="eyebrow">Pourquoi nous choisir</span>
+        <h2>Tout pour réussir vos photos souvenirs</h2>
+        <span class="moustache-divider" aria-hidden="true"></span>
+      </div>
+      <div class="features">
+        <div class="feature fade-in">
+          <div class="feature__icon" aria-hidden="true">🎯</div>
+          <h3 class="feature__title">Deux formules au choix</h3>
+          <p class="feature__desc">On vous livre avec un guide simple, ou notre équipe installe et anime sur place.</p>
+        </div>
+        <div class="feature fade-in">
+          <div class="feature__icon" aria-hidden="true">⚡</div>
+          <h3 class="feature__title">Impression instantanée</h3>
+          <p class="feature__desc">Tirages illimités en moins de 10 secondes, format polaroïd ou bandeau.</p>
+        </div>
+        <div class="feature fade-in">
+          <div class="feature__icon" aria-hidden="true">🎨</div>
+          <h3 class="feature__title">Personnalisation incluse</h3>
+          <p class="feature__desc">Prénoms, date, logo : votre tirage à votre image, sans frais supplémentaires.</p>
+        </div>
+        <div class="feature fade-in">
+          <div class="feature__icon" aria-hidden="true">📦</div>
+          <h3 class="feature__title">Accessoires fournis</h3>
+          <p class="feature__desc">Chapeaux, lunettes, pancartes, déguisements : un pack complet à thème.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__head">
+        <span class="eyebrow">Nos bornes</span>
+        <h2>Trois modèles, une ambiance pour chacun</h2>
+        <p>Choisissez la borne qui colle à votre événement — ou laissez-nous vous conseiller.</p>
+        <span class="moustache-divider" aria-hidden="true"></span>
+      </div>
+      <div class="grid grid--3">
+        {bornes.map(b => <BorneCard borne={b} />)}
+      </div>
+      <p class="text-center" style="margin-top: var(--space-7);">
+        <a href="/bornes/" class="btn btn--ghost">Voir tous les détails</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section__head">
+        <span class="eyebrow">Formules</span>
+        <h2>Sur place, en livraison ou pour vos entreprises</h2>
+        <span class="moustache-divider" aria-hidden="true"></span>
+      </div>
+      <div class="grid grid--3">
+        {formules.map(f => <FormuleCard formule={f} />)}
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner />
+</BaseLayout>

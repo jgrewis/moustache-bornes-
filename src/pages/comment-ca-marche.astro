@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ParcoursStep from '../components/ParcoursStep.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+
+const parcoursEnvoi = [
+  { num: 1, title: 'Vous nous décrivez votre événement', desc: "Date, lieu, durée, ambiance : vous remplissez le formulaire en 2 minutes." },
+  { num: 2, title: 'Nous validons la disponibilité', desc: "Réponse sous 24 h avec devis détaillé et maquette du tirage." },
+  { num: 3, title: "Livraison à J-1", desc: "La borne arrive dans un flight-case roulant, par transporteur ou en main propre." },
+  { num: 4, title: 'Montage en 5 minutes', desc: "Guide illustré pas à pas. Une prise secteur suffit, pas besoin de Wi-Fi." },
+  { num: 5, title: 'Soirée et impressions illimitées', desc: "Vos invités cliquent, posent, impriment. La borne fait tout toute seule." },
+  { num: 6, title: 'Retour facile', desc: "Vous remettez la borne dans son case, le transporteur passe la récupérer." },
+];
+
+const parcoursSurPlace = [
+  { num: 1, title: 'Devis + RDV de calage', desc: "Nous échangeons sur l'agencement, la maquette des tirages, les accessoires." },
+  { num: 2, title: 'Installation par notre équipe', desc: "Nous arrivons 1 h avant le top départ et installons la borne dans votre espace." },
+  { num: 3, title: 'Animateur dédié', desc: "Un opérateur reste sur place toute la soirée pour guider les invités." },
+  { num: 4, title: 'Tirages premium illimités', desc: "Format au choix, papier mat ou brillant, signature numérique disponible." },
+  { num: 5, title: 'Désinstallation discrète', desc: "Nous démontons en silence à la fin de l'événement, sans déranger vos invités." },
+  { num: 6, title: 'Galerie souvenir', desc: "Toutes les photos haute définition vous sont envoyées dans les 48 h." },
+];
+---
+
+<BaseLayout
+  title="Comment ça marche"
+  description="Deux formules de location de borne photo : livraison avec montage simple ou installation sur place par notre équipe. Découvrez les étapes."
+>
+  <Hero
+    compact
+    eyebrow="Le déroulé"
+    title="Deux parcours, zéro prise de tête"
+    lead="Que vous installiez vous-même ou que nous gérions tout, voici comment ça se passe étape par étape."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="parcours">
+        <article class="parcours-track">
+          <div class="parcours-track__header">
+            <div class="parcours-track__icon" aria-hidden="true">🚚</div>
+            <div>
+              <h2 class="parcours-track__title">Formule "On vous livre"</h2>
+              <p class="parcours-track__subtitle">Vous installez vous-même, en toute simplicité</p>
+            </div>
+          </div>
+          <div class="parcours-steps">
+            {parcoursEnvoi.map(s => <ParcoursStep {...s} />)}
+          </div>
+        </article>
+
+        <article class="parcours-track parcours-track--secondary">
+          <div class="parcours-track__header">
+            <div class="parcours-track__icon" aria-hidden="true">🎪</div>
+            <div>
+              <h2 class="parcours-track__title">Formule "On installe sur place"</h2>
+              <p class="parcours-track__subtitle">Notre équipe gère tout, vous profitez</p>
+            </div>
+          </div>
+          <div class="parcours-steps">
+            {parcoursSurPlace.map(s => <ParcoursStep {...s} />)}
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner
+    title="Prêt à animer votre événement ?"
+    text="On vous répond sous 24 h avec un devis personnalisé et une maquette de tirage."
+  />
+</BaseLayout>

@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import FormuleCard from '../components/FormuleCard.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import { formules } from '../data/formules.js';
+---
+
+<BaseLayout
+  title="Tarifs"
+  description="Tarifs location borne photo en Alsace : formule livraison, formule sur place, formule entreprise. Devis personnalisé sous 24 h."
+>
+  <Hero
+    compact
+    eyebrow="Nos formules"
+    title="Des tarifs clairs, sans surprise"
+    lead="Les tarifs affichés sont indicatifs : nous adaptons le devis à votre événement (durée, distance, options)."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid--3">
+        {formules.map(f => <FormuleCard formule={f} />)}
+      </div>
+      <p class="text-center text-muted" style="margin-top: var(--space-7); font-size: 0.95rem;">
+        Tous nos tarifs s'entendent TTC. Devis professionnel sur demande. Aucun acompte n'est encaissé avant signature.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container container-narrow">
+      <div class="section__head">
+        <span class="eyebrow">Options à la carte</span>
+        <h2>Personnalisez votre formule</h2>
+      </div>
+      <ul style="display:grid; gap: var(--space-4); max-width: 60ch; margin-inline: auto;">
+        <li><strong>Fond personnalisé</strong> — tissu, fleurs, kraft, mur végétal</li>
+        <li><strong>Pack accessoires premium</strong> — thématique sur mesure (mariage, années 20, fête foraine...)</li>
+        <li><strong>Album souvenir relié</strong> — vos invités collent leur tirage et laissent un mot</li>
+        <li><strong>Tirages supplémentaires</strong> — format polaroïd, bandeau ou A6</li>
+        <li><strong>Galerie privée en ligne</strong> — partage des photos haute définition</li>
+        <li><strong>Multi-jours</strong> — pour les séminaires et salons sur plusieurs dates</li>
+      </ul>
+    </div>
+  </section>
+
+  <CtaBanner />
+</BaseLayout>
